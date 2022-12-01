@@ -1,5 +1,4 @@
-using SwagProject.Driver;
-using SwagProject.Pages;
+
 
 namespace SwagProject.Test
 {
@@ -9,7 +8,6 @@ namespace SwagProject.Test
         ProductPage productPage;
         CardPage cardPage;
 
-
         [SetUp]
 
         public void Setup()
@@ -18,8 +16,8 @@ namespace SwagProject.Test
             loginPage = new LoginPage();
             productPage = new ProductPage();
             cardPage = new CardPage();
-
         }
+
         [TearDown]
         public void Close()
         {
@@ -38,8 +36,11 @@ namespace SwagProject.Test
         [Test]
         public void TC02_SortProductByPrice_ShouldSortByHighPrice()
         {
+            //act
             loginPage.Login("standard_user", "secret_sauce");
+            //Arrange
             productPage.SelectOprtion("Price (high to low)");
+            //Assert
             Assert.That(productPage.SortByPrice.Displayed);
         }
         [Test]
@@ -51,6 +52,7 @@ namespace SwagProject.Test
             productPage.About.Click();
             Assert.That("https://saucelabs.com/", Is.EqualTo(WebDrivers.Instance.Url));
         }
+
         [Test]
         public void TC04_BuyProducts_ShouldBeFhinishedShopping()
         {
@@ -64,13 +66,8 @@ namespace SwagProject.Test
             cardPage.ZipCode.SendKeys("11000");
             cardPage.ContinueButton.Click();
             cardPage.Finish.Click();
-            Assert.That("THANK YOU FOR YOUR ORDER", Is.EqualTo(cardPage.AssertFinish.Text));
+            Assert.That("THANK YOU FOR YOUR ORDER", Is.EqualTo(cardPage.AssertFinish.Text)); 
             
         }
-        
-
-
-
-
     }
 }
