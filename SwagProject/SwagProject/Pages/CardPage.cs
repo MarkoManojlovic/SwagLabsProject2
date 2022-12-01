@@ -1,7 +1,4 @@
-﻿using OpenQA.Selenium;
-using SwagProject.Driver;
-
-namespace SwagProject.Pages
+﻿namespace SwagProject.Pages
 {
     public class CardPage
     {
